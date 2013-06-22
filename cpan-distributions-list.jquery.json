@@ -1,0 +1,26 @@
+{
+  "name": "cpan-distributions-list",
+  "title": "CPAN Distributions List",
+  "description": "Display a list of CPAN distributions and related information for a specified Perl author.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list",
+  "author": {
+    "name": "Guillaume Aubert",
+    "email": "aubertg@cpan.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list.git"
+  },
+  "bugs": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list/issues",
+  "licenses": [
+    {
+      "type": "GPL",
+      "url": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list/blob/master/LICENSE-GPL"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}
