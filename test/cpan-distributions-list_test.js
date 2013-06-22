@@ -1,62 +1,56 @@
-(function($) {
-  /*
-    ======== A Handy Little QUnit Reference ========
-    http://api.qunitjs.com/
-
-    Test methods:
-      module(name, {[setup][ ,teardown]})
-      test(name, callback)
-      expect(numberOfAssertions)
-      stop(increment)
-      start(decrement)
-    Test assertions:
-      ok(value, [message])
-      equal(actual, expected, [message])
-      notEqual(actual, expected, [message])
-      deepEqual(actual, expected, [message])
-      notDeepEqual(actual, expected, [message])
-      strictEqual(actual, expected, [message])
-      notStrictEqual(actual, expected, [message])
-      throws(block, [expected], [message])
-  */
-
-  module('jQuery#awesome', {
-    // This will run before each test in this module.
-    setup: function() {
-      this.elems = $('#qunit-fixture').children();
-    }
-  });
-
-  test('is chainable', function() {
-    expect(1);
-    // Not a bad test to run on collection methods.
-    strictEqual(this.elems.awesome(), this.elems, 'should be chainable');
-  });
-
-  test('is awesome', function() {
-    expect(1);
-    strictEqual(this.elems.awesome().text(), 'awesome0awesome1awesome2', 'should be awesome');
-  });
-
-  module('jQuery.awesome');
-
-  test('is awesome', function() {
-    expect(2);
-    strictEqual($.awesome(), 'awesome.', 'should be awesome');
-    strictEqual($.awesome({punctuation: '!'}), 'awesome!', 'should be thoroughly awesome');
-  });
-
-  module(':awesome selector', {
-    // This will run before each test in this module.
-    setup: function() {
-      this.elems = $('#qunit-fixture').children();
-    }
-  });
-
-  test('is awesome', function() {
-    expect(1);
-    // Use deepEqual & .get() when comparing jQuery objects.
-    deepEqual(this.elems.filter(':awesome').get(), this.elems.last().get(), 'knows awesome when it sees it');
-  });
-
-}(jQuery));
+(
+	function($)
+	{
+		module( 'Default' );
+		
+		test(
+			'Verify that the table is empty.',
+			function()
+			{
+				expect(1);
+				
+				equal(
+					$('#cpan_distributions').find('tbody tr.distribution').length,
+					0,
+					'No data rows in the table.'
+				);
+			}
+		);
+		
+		asyncTest(
+			"Create distributions list.",
+			function()
+			{
+				expect(0);
+				
+				$('#cpan_distributions').createDistributionsList(
+					{
+						on_success: function(json)
+						{
+							start();
+						}
+					}
+				);
+			}
+		);
+		
+		test(
+			'Verify that the table has been populated.',
+			function()
+			{
+				expect(2);
+				
+				notEqual(
+					$('#cpan_distributions').find('tbody tr.distribution').length,
+					0,
+					'Rows have been populated.'
+				);
+				
+				ok(
+					$('#cpan_distributions').find('tbody tr.distribution').length > 10,
+					'Find at least 10 rows.'
+				);
+			}
+		);
+	}(jQuery)
+);
