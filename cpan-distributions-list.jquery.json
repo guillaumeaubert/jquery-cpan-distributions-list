@@ -15,8 +15,8 @@
   "bugs": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list/issues",
   "licenses": [
     {
-      "type": "GPL",
-      "url": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list/blob/master/LICENSE-GPL"
+      "type": "GPLv3",
+      "url": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list/blob/master/LICENSE"
     }
   ],
   "dependencies": {

@@ -3,7 +3,7 @@
  * https://github.com/guillaumeaubert/jquery-cpan-distributions-list
  *
  * Copyright (c) 2013 Guillaume Aubert
- * Licensed under the GPL license.
+ * Licensed under the GPLv3 license.
  */
 
 (function($) {
