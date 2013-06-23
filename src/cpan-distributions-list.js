@@ -122,6 +122,7 @@
 				tr.css('display', '');
 				tr.attr('id', 'row_'+index);
 				tr.addClass('distribution');
+				tr.removeClass('template');
 				
 				// Append the row at the end of the table.
 				container.find('tbody:last').append(tr);
