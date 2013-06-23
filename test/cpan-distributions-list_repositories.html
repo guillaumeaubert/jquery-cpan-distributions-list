@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CPAN Distributions List Test Suite</title>
+		
+		<!-- Load local jQuery. This can be overridden with a ?jquery=___ param. -->
+		<script src="../libs/jquery-loader.js"></script>
+		
+		<!-- Load local QUnit. -->
+		<link rel="stylesheet" href="../libs/qunit/qunit.css" media="screen">
+		<script src="../libs/qunit/qunit.js"></script>
+		
+		<!-- Load local lib and tests. -->
+		<script src="../src/cpan-distributions-list.js"></script>
+		<script src="cpan-distributions-list_repositories.js"></script>
+		
+		<!-- Removing access to jQuery and $. But it'll still be available as _$, if
+		     you REALLY want to mess around with jQuery in the console. REMEMBER WE
+		     ARE TESTING A PLUGIN HERE, THIS HELPS ENSURE BEST PRACTICES. REALLY. -->
+		<script>window._$ = jQuery.noConflict(true);</script>
+	</head>
+	<body>
+		<h2>Test of 'repositories' argument.</h2>
+		<table id="repositories">
+			<thead>
+				<th>Distribution</th>
+				<th>Current Version</th>
+				<th>Links</th>
+				<th>Build Status</th>
+				<th>Test Coverage</th>
+			</thead>
+			<tbody>
+				<tr style="display: none;" class="template">
+					<td class="distribution"><!-- Name of the distribution --></td>
+					<td class="version"><!-- Current version of the distribution --></td>
+					<td class="links">
+						<span class="github"><!-- GitHub link --></span>
+						|
+						<span class="metacpan"><!-- MetaCPAN link --></span>
+						|
+						<span class="cpants"><!-- CPANTS link --></span>
+					</td>
+					<td class="travis_status_badge"><!-- Travis CI - badge to indicate build status --></td>
+					<td class="coveralls_badge"><!-- Coveralls.io - badge to indicate test coverage percentage --></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<hr/>
+		
+		<h2>Test of 'repository_lowercase' argument.</h2>
+		<table id="repository_lowercase">
+			<thead>
+				<th>Distribution</th>
+				<th>Current Version</th>
+				<th>Links</th>
+				<th>Build Status</th>
+				<th>Test Coverage</th>
+			</thead>
+			<tbody>
+				<tr style="display: none;" class="template">
+					<td class="distribution"><!-- Name of the distribution --></td>
+					<td class="version"><!-- Current version of the distribution --></td>
+					<td class="links">
+						<span class="github"><!-- GitHub link --></span>
+						|
+						<span class="metacpan"><!-- MetaCPAN link --></span>
+						|
+						<span class="cpants"><!-- CPANTS link --></span>
+					</td>
+					<td class="travis_status_badge"><!-- Travis CI - badge to indicate build status --></td>
+					<td class="coveralls_badge"><!-- Coveralls.io - badge to indicate test coverage percentage --></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
