@@ -1,4 +1,4 @@
-/*! CPAN Distributions List - v0.1.0 - 2013-06-22
+/*! CPAN Distributions List - v0.1.0 - 2013-06-23
 * https://github.com/guillaumeaubert/jquery-cpan-distributions-list
 * Copyright (c) 2013 Guillaume Aubert; Licensed GPLv3 */
 (
@@ -6,6 +6,8 @@
 	{
 		$.fn.createDistributionsList = function( options )
 		{
+			var container = this;
+			
 			// Parse options and add defaults if needed.
 			var settings = $.extend(
 				{
@@ -123,9 +125,10 @@
 				tr.css('display', '');
 				tr.attr('id', 'row_'+index);
 				tr.addClass('distribution');
+				tr.removeClass('template');
 				
 				// Append the row at the end of the table.
-				$('#cpan_distributions > tbody:last').append(tr);
+				container.find('tbody:last').append(tr);
 			}
 		};
 	} ( jQuery )
