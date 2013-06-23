@@ -119,10 +119,6 @@ Documentation
 </table>
 
 
-Release History
----------------
-
-
 Copyright & License
 -------------------
 
