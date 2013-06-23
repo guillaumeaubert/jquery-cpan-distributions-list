@@ -1,30 +1,124 @@
-# CPAN Distributions List
+CPAN Distributions List
+=======================
 
 Display a list of CPAN distributions and related information for a specified Perl author.
 
-## Getting Started
+
+Getting Started
+---------------
+
 Download the [production version][min] or the [development version][max].
 
 [min]: https://raw.github.com/guillaumeaubert/jquery-cpan-distributions-list/master/dist/cpan-distributions-list.min.js
 [max]: https://raw.github.com/guillaumeaubert/jquery-cpan-distributions-list/master/dist/cpan-distributions-list.js
 
-In your web page:
+Add the following in your `HEAD` section:
 
 ```html
-<script src="jquery.js"></script>
+<script src="libs/jquery/jquery.js"></script>
 <script src="dist/cpan-distributions-list.min.js"></script>
 <script>
-jQuery(function($) {
-  $.awesome(); // "awesome"
-});
+	$('#cpan_distributions').createDistributionsList(
+		{
+			pause_id: "AUBERTG",
+			github_id: "guillaumeaubert",
+		}
+	);
 </script>
 ```
 
-## Documentation
-_(Coming soon)_
+Add the following to your `BODY` section:
 
-## Examples
-_(Coming soon)_
+```html
+<table id="cpan_distributions">
+	<thead>
+		<th>Distribution</th>
+		<th>Current Version</th>
+		<th>Links</th>
+		<th>Build Status</th>
+		<th>Test Coverage</th>
+	</thead>
+	<tbody>
+		<tr style="display: none;" class="template">
+			<td class="distribution"><!-- Name of the distribution --></td>
+			<td class="version"><!-- Current version of the distribution --></td>
+			<td class="links">
+				<span class="github"><!-- GitHub link --></span>
+				|
+				<span class="metacpan"><!-- MetaCPAN link --></span>
+				|
+				<span class="cpants"><!-- CPANTS link --></span>
+			</td>
+			<td class="travis_status_badge"><!-- Travis CI - badge to indicate build status --></td>
+			<td class="coveralls_badge"><!-- Coveralls.io - badge to indicate test coverage percentage --></td>
+		</tr>
+	</tbody>
+</table>
+```
 
-## Release History
-_(Nothing yet)_
+
+Documentation
+-------------
+
+`createDistributionsList()` accepts the following arguments:
+
+<table>
+  <tr>
+    <th>Argument</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>`pause_id`</th>
+    <td>`AUBERTG`</th>
+    <td>A PAUSE author ID.</td>
+  </tr>
+  <tr>
+    <td>`github_id`</td>
+    <td>`guillaumeaubert`</td>
+    <td>The corresponding GitHub ID, where the repositories for all the distributions are located.</td>
+  </tr>
+  <tr>
+    <td>`coveralls`</td>
+    <td>`true`</td>
+    <td>Control the display of the Coveralls.io badges for all distributions.</td>
+  </tr>
+  <tr>
+    <td>`travis_ci`</td>
+    <td>`true`</td>
+    <td>Control the display of the Travis-CI badge.</td>
+  </tr>
+  <tr>
+    <td>`repository_lowercase`</td>
+    <td>`false`</td>
+    <td>
+      By default, this plugin expects the name of the repositories on GitHub to
+      match the name of the distributions, case included. If you have chosen to
+      lowercase the name of the distribution for the repository names, set this
+      argument to `true`.
+    </td>
+  </tr>
+  <tr>
+    <td>`repositories`</td>
+    <td>`{}`</td>
+    <td>
+      Hash associating a distribution name with a corresponding repository on
+      GitHub. This is useful if the repository name does not match the
+      distribution name.
+    </td>
+  </tr>
+  <tr>
+    <td>`template_row`</td>
+    <td>`this.find('tr.template:first')`</td>
+    <td>
+      This plugin uses a hidden `tr` row as a template to clone and display
+      each distribution. Changing this value allows sharing the same template
+      across different tables, for example.
+    </td>
+  </tr>
+</table>
+
+
+Release History
+---------------
+
