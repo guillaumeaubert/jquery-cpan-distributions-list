@@ -3,6 +3,8 @@
 	{
 		$.fn.createDistributionsList = function( options )
 		{
+			var container = this;
+			
 			// Parse options and add defaults if needed.
 			var settings = $.extend(
 				{
@@ -122,7 +124,7 @@
 				tr.addClass('distribution');
 				
 				// Append the row at the end of the table.
-				$('#cpan_distributions > tbody:last').append(tr);
+				container.find('tbody:last').append(tr);
 			}
 		};
 	} ( jQuery )
