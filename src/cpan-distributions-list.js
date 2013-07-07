@@ -5,6 +5,9 @@
 		{
 			var container = this;
 			
+			// Remove existing rows, in case we're refreshing the container.
+			container.find('tbody:last tr.distribution').remove();
+			
 			// Parse options and add defaults if needed.
 			var settings = $.extend(
 				{
