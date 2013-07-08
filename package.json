@@ -2,7 +2,7 @@
   "name": "cpan-distributions-list",
   "title": "CPAN Distributions List",
   "description": "Display a list of CPAN distributions and related information for a specified Perl author.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "engines": {
     "node": ">= 0.8.0"
   },
