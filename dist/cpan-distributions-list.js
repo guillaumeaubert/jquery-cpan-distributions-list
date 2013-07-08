@@ -1,4 +1,4 @@
-/*! CPAN Distributions List - v0.1.0 - 2013-06-23
+/*! CPAN Distributions List - v0.1.0 - 2013-07-08
 * https://github.com/guillaumeaubert/jquery-cpan-distributions-list
 * Copyright (c) 2013 Guillaume Aubert; Licensed GPLv3 */
 (
@@ -7,6 +7,9 @@
 		$.fn.createDistributionsList = function( options )
 		{
 			var container = this;
+			
+			// Remove existing rows, in case we're refreshing the container.
+			container.find('tbody:last tr.distribution').remove();
 			
 			// Parse options and add defaults if needed.
 			var settings = $.extend(
@@ -55,11 +58,8 @@
 							}
 						);
 						
-						// Callback for success, if needed.
-						if ( settings.on_success )
-						{
-							settings.on_success( json );
-						}
+						// Asynchronous population of GitHub data.
+						populate_github_information( container );
 					},
 					error: function(xhr)
 					{
@@ -68,14 +68,65 @@
 				}
 			);
 			
-			function display_distribution(index, distribution, version, date)
+			// Retrieve the repository information from GitHub and populate where needed.
+			function populate_github_information(container)
 			{
-				// Sometimes, the repository name does not match the distribution.
-				var repository = settings.repositories[distribution]
+				$.ajax(
+					{
+						type: 'GET',
+						async: true,
+						dataType: "json",
+						url: "https://api.github.com/users/"+settings.github_id+"/repos",
+						success: function(json)
+						{
+							if ( json.length === 0 )
+							{
+								alert('GitHub returned no repositories for this username!');
+								return;
+							}
+							
+							// Add GitHub information to the appropriate rows.
+							json.forEach(
+								function(element, index)
+								{
+									var distribution = element.name;
+									var repository = get_repository(distribution);
+									
+									container.find('tr#distribution_'+distribution+' td.github_open_issues').html(
+										$('<a>')
+											.attr('href', "https://github.com/"+settings.github_id+"/"+repository+"/issues")
+											.html(element.open_issues_count)
+									);
+								}
+							);
+							
+							// Callback for success, if needed.
+							if ( settings.on_success )
+							{
+								settings.on_success( json );
+							}
+						},
+						error: function(xhr)
+						{
+							alert('Error: ' + xhr.statusText);
+						}
+					}
+				);
+			}
+			
+			// Sometimes, the repository name does not match the distribution.
+			function get_repository(distribution)
+			{
+				return settings.repositories[distribution]
 					? settings.repositories[distribution]
 					: settings.repository_lowercase
 						? distribution.toLowerCase()
 						: distribution;
+			}
+			
+			function display_distribution(index, distribution, version, date)
+			{
+				var repository = get_repository(distribution);
 				
 				// Gather all the data that we will use to build the table.
 				var data =
@@ -123,7 +174,7 @@
 					tr.find('.'+key).html( data[key] );
 				}
 				tr.css('display', '');
-				tr.attr('id', 'row_'+index);
+				tr.attr('id', 'distribution_'+distribution);
 				tr.addClass('distribution');
 				tr.removeClass('template');
 				
