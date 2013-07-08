@@ -52,5 +52,31 @@
 				);
 			}
 		);
+		
+		test(
+			'Verify that GitHub information was pulled.',
+			function()
+			{
+				expect(3);
+				
+				var open_issues_count = $('#cpan_distributions tr#distribution_DBIx-NinjaORM td.github_open_issues').text();
+				
+				notEqual(
+					open_issues_count,
+					'?',
+					'The placeholder for open issues count has been replaced.'
+				);
+				
+				ok(
+					!isNaN(open_issues_count),
+					'The issues count is a number.'
+				);
+				
+				ok(
+					open_issues_count > 1,
+					'The issues count shows at least one issue open.'
+				);
+			}
+		);
 	}(jQuery)
 );
