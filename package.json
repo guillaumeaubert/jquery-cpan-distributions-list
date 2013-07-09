@@ -7,7 +7,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt qunit"
+    "test": "grunt travis"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.1",
