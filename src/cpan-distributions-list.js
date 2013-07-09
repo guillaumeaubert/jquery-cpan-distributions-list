@@ -1,5 +1,5 @@
 (
-	function ( $ )
+	function($)
 	{
 		/**
 		* createDistributionsList
@@ -9,7 +9,7 @@
 		*
 		* @param {hash} options The options for generating the list of distributions.
 		*/
-		$.fn.createDistributionsList = function( options )
+		$.fn.createDistributionsList = function(options)
 		{
 			/***** MAIN *****/
 			var container = this;
@@ -53,12 +53,12 @@
 					url: "http://api.metacpan.org/v0/release/_search?q=author:"+settings.pause_id+"%20AND%20status:latest&fields=version,distribution,date&size=100&sort=distribution",
 					success: function(json)
 					{
-						if ( json.timed_out === 'false')
+						if (json.timed_out === 'false')
 						{
 							alert('MetaCPAN timed out (' + json.timed_out + ')!');
 							return;
 						}
-						if ( json.hits.total === 0 )
+						if (json.hits.total === 0)
 						{
 							alert('MetaCPAN returned no distributions for this author!');
 							return;
@@ -108,7 +108,7 @@
 					url: "https://api.github.com/users/"+settings.github_id+"/repos",
 					success: function(json)
 					{
-						if ( json.length === 0 )
+						if (json.length === 0)
 						{
 							alert('GitHub returned no repositories for this username!');
 							return;
@@ -130,9 +130,9 @@
 						);
 						
 						// Callback for success, if needed.
-						if ( settings.on_success )
+						if (settings.on_success)
 						{
-							settings.on_success( json );
+							settings.on_success(json);
 						}
 					},
 					error: function(xhr)
@@ -160,7 +160,7 @@
 		
 		/**
 		* Display a distribution in the container table.
-		* 
+		*
 		* @param {JQuery selector} container The container to display the
 		* distribution rows in.
 		* @param {hash} settings The settings to use for display.
@@ -214,9 +214,9 @@
 			var tr = settings.template_row.clone();
 			
 			// Add information to the row.
-			for ( var key in data )
+			for (var key in data)
 			{
-				tr.find('.'+key).html( data[key] );
+				tr.find('.'+key).html(data[key]);
 			}
 			tr.css('display', '');
 			tr.attr('id', 'distribution_'+distribution);
@@ -226,5 +226,5 @@
 			// Append the row at the end of the table.
 			container.find('tbody:last').append(tr);
 		}
-	} ( jQuery )
+	}(jQuery)
 );
