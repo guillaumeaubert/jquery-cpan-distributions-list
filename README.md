@@ -2,6 +2,7 @@ CPAN Distributions List
 =======================
 
 [![Build Status](https://travis-ci.org/guillaumeaubert/jquery-cpan-distributions-list.png?branch=master)](https://travis-ci.org/guillaumeaubert/jquery-cpan-distributions-list)
+[![Coverage Status](https://coveralls.io/repos/guillaumeaubert/jquery-cpan-distributions-list/badge.png?branch=master)](https://coveralls.io/r/guillaumeaubert/jquery-cpan-distributions-list?branch=master)
 
 Display a list of CPAN distributions and related information for a specified Perl author.
 
