@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       dist: {
         src: ['src/<%= pkg.name %>.js'],
         dest: 'dist/<%= pkg.name %>.js'
-      },
+      }
     },
     uglify: {
       options: {
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       dist: {
         src: '<%= concat.dist.dest %>',
         dest: 'dist/<%= pkg.name %>.min.js'
-      },
+      }
     },
     qunit: {
       files: ['test/**/*.html'],
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
           jshintrc: 'test/.jshintrc'
         },
         src: ['test/**/*.js']
-      },
+      }
     },
     watch: {
       gruntfile: {
@@ -81,8 +81,8 @@ module.exports = function(grunt) {
       test: {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'qunit']
-      },
-    },
+      }
+    }
   });
 
   // These plugins provide necessary tasks.
