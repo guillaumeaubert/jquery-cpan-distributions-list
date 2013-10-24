@@ -72,38 +72,38 @@ Documentation
     <th>Description</th>
   </tr>
   <tr>
-    <td>`pause_id`</th>
-    <td>`AUBERTG`</th>
+    <td>pause_id</th>
+    <td>AUBERTG</th>
     <td>A PAUSE author ID.</td>
   </tr>
   <tr>
-    <td>`github_id`</td>
-    <td>`guillaumeaubert`</td>
+    <td>github_id</td>
+    <td>guillaumeaubert</td>
     <td>The corresponding GitHub ID, where the repositories for all the distributions are located.</td>
   </tr>
   <tr>
-    <td>`coveralls`</td>
-    <td>`true`</td>
+    <td>coveralls</td>
+    <td>true</td>
     <td>Control the display of the Coveralls.io badges for all distributions.</td>
   </tr>
   <tr>
-    <td>`travis_ci`</td>
-    <td>`true`</td>
+    <td>travis_ci</td>
+    <td>true</td>
     <td>Control the display of the Travis-CI badge.</td>
   </tr>
   <tr>
-    <td>`repository_lowercase`</td>
-    <td>`false`</td>
+    <td>repository_lowercase</td>
+    <td>false</td>
     <td>
       By default, this plugin expects the name of the repositories on GitHub to
       match the name of the distributions, case included. If you have chosen to
       lowercase the name of the distribution for the repository names, set this
-      argument to `true`.
+      argument to true.
     </td>
   </tr>
   <tr>
-    <td>`repositories`</td>
-    <td>`{}`</td>
+    <td>repositories</td>
+    <td>{}</td>
     <td>
       Hash associating a distribution name with a corresponding repository on
       GitHub. This is useful if the repository name does not match the
@@ -111,10 +111,10 @@ Documentation
     </td>
   </tr>
   <tr>
-    <td>`template_row`</td>
-    <td>`this.find('tr.template:first')`</td>
+    <td>template_row</td>
+    <td>this.find('tr.template:first')</td>
     <td>
-      This plugin uses a hidden `tr` row as a template to clone and display
+      This plugin uses a hidden tr row as a template to clone and display
       each distribution. Changing this value allows sharing the same template
       across different tables, for example.
     </td>
