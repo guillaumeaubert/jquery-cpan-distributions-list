@@ -129,17 +129,11 @@ Development
 
 2. Install [Grunt](http://gruntjs.com/getting-started).
 
-3. Clone the repository:
+3. Clone the repository: `git clone git@github.com:guillaumeaubert/jquery-cpan-distributions-list.git`
 
-`git clone git@github.com:guillaumeaubert/jquery-cpan-distributions-list.git`
+4. Install the project dependencies: `cd jquery-cpan-distributions-list && npm install`
 
-4. Install the project dependencies:
-
-`cd jquery-cpan-distributions-list && npm install`
-
-5. Run Grunt to check the files and rebuild:
-
-`grunt`
+5. Run Grunt to check the files and rebuild: `grunt`
 
 
 Copyright & License
