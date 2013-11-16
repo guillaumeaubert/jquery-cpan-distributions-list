@@ -13,10 +13,10 @@
 		{
 			/***** MAIN *****/
 			var container = this;
-			
+
 			// Remove existing rows, in case we're refreshing the container.
 			container.find('tbody:last tr.distribution').remove();
-			
+
 			// Parse options and add defaults if needed.
 			var settings = $.extend(
 				{
@@ -30,12 +30,12 @@
 				},
 				options
 			);
-			
+
 			retrieve_metacpan_information(container, settings);
 		};
-		
+
 		/***** SUPPORTING FUNCTIONS *****/
-		
+
 		/**
 		* Retrieve the distribution information from MetaCPAN.
 		*
@@ -63,7 +63,7 @@
 							alert('MetaCPAN returned no distributions for this author!');
 							return;
 						}
-						
+
 						// Display each distribution.
 						json.hits.hits.forEach(
 							function(element, index)
@@ -78,7 +78,7 @@
 								);
 							}
 						);
-						
+
 						// Asynchronous population of GitHub data.
 						populate_github_information(container, settings);
 					},
@@ -89,7 +89,7 @@
 				}
 			);
 		}
-		
+
 		/**
 		* Retrieve the repository information from GitHub and populate where
 		* needed.
@@ -113,14 +113,14 @@
 							alert('GitHub returned no repositories for this username!');
 							return;
 						}
-						
+
 						// Add GitHub information to the appropriate rows.
 						json.forEach(
 							function(element, index)
 							{
 								var distribution = element.name;
 								var repository = get_repository(settings, distribution);
-								
+
 								container.find('tr#distribution_'+distribution+' td.github_open_issues').html(
 									$('<a>')
 										.attr('href', "https://github.com/"+settings.github_id+"/"+repository+"/issues")
@@ -128,7 +128,7 @@
 								);
 							}
 						);
-						
+
 						// Callback for success, if needed.
 						if (settings.on_success)
 						{
@@ -142,7 +142,7 @@
 				}
 			);
 		}
-		
+
 		/**
 		* Retrieve the name of the repository from the name of the distribution.
 		*
@@ -157,7 +157,7 @@
 					? distribution.toLowerCase()
 					: distribution;
 		}
-		
+
 		/**
 		* Display a distribution in the container table.
 		*
@@ -172,7 +172,7 @@
 		function display_distribution(container, settings, index, distribution, version, date)
 		{
 			var repository = get_repository(settings, distribution);
-			
+
 			// Gather all the data that we will use to build the table.
 			var data =
 			{
@@ -209,10 +209,10 @@
 					.attr('href', 'http://cpants.cpanauthors.org/dist/'+distribution)
 					.html('CPANTS')
 			};
-			
+
 			// Clone row.
 			var tr = settings.template_row.clone();
-			
+
 			// Add information to the row.
 			for (var key in data)
 			{
@@ -222,7 +222,7 @@
 			tr.attr('id', 'distribution_'+distribution);
 			tr.addClass('distribution');
 			tr.removeClass('template');
-			
+
 			// Append the row at the end of the table.
 			container.find('tbody:last').append(tr);
 		}

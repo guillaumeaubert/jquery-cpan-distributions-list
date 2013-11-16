@@ -3,13 +3,13 @@
 	function($)
 	{
 		module( "Argument 'repositories' set" );
-		
+
 		test(
 			'Verify that the table is empty.',
 			function()
 			{
 				expect(1);
-				
+
 				equal(
 					$('#repositories').find('tbody tr.distribution').length,
 					0,
@@ -17,13 +17,13 @@
 				);
 			}
 		);
-		
+
 		asyncTest(
 			"Create distributions list.",
 			function()
 			{
 				expect(0);
-				
+
 				$('#repositories').createDistributionsList(
 					{
 						// Using Jennifer Pinkham's profile for this test, since her repository names
@@ -43,19 +43,19 @@
 				);
 			}
 		);
-		
+
 		test(
 			'Verify that the table has been populated.',
 			function()
 			{
 				expect(2);
-				
+
 				notEqual(
 					$('#repositories').find('tbody tr.distribution').length,
 					0,
 					'Rows have been populated.'
 				);
-				
+
 				ok(
 					$('#repositories').find('tbody tr.distribution').length >= 2,
 					'Find at least 2 rows.'
@@ -70,13 +70,13 @@
 	function($)
 	{
 		module( "Argument 'repository_lowercase' set" );
-		
+
 		test(
 			'Verify that the table is empty.',
 			function()
 			{
 				expect(1);
-				
+
 				equal(
 					$('#repository_lowercase').find('tbody tr.distribution').length,
 					0,
@@ -84,13 +84,13 @@
 				);
 			}
 		);
-		
+
 		asyncTest(
 			"Create distributions list.",
 			function()
 			{
 				expect(0);
-				
+
 				$('#repository_lowercase').createDistributionsList(
 					{
 						// Using Jennifer Pinkham's profile for this test, since her repository names
@@ -106,19 +106,19 @@
 				);
 			}
 		);
-		
+
 		test(
 			'Verify that the table has been populated.',
 			function()
 			{
 				expect(2);
-				
+
 				notEqual(
 					$('#repository_lowercase').find('tbody tr.distribution').length,
 					0,
 					'Rows have been populated.'
 				);
-				
+
 				ok(
 					$('#repository_lowercase').find('tbody tr.distribution').length >= 2,
 					'Find at least 2 rows.'
