@@ -2,7 +2,7 @@
   "name": "cpan-distributions-list",
   "title": "CPAN Distributions List",
   "description": "Display a list of CPAN distributions and related information for a specified Perl author.",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list",
   "author": {
     "name": "Guillaume Aubert",

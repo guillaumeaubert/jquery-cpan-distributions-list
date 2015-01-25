@@ -1,4 +1,4 @@
-/*! CPAN Distributions List - v0.2.0 - 2015-01-24
+/*! CPAN Distributions List - v1.0.0 - 2015-01-24
 * https://github.com/guillaumeaubert/jquery-cpan-distributions-list
 * Copyright (c) 2015 Guillaume Aubert; Licensed GPLv3 */
 (
@@ -53,7 +53,7 @@
 					type: 'GET',
 					async: true,
 					dataType: "json",
-					url: "http://api.metacpan.org/v0/release/_search?q=author:"+settings.pause_id+"%20AND%20status:latest&fields=version,distribution,date&size=100&sort=distribution",
+					url: "http://api.metacpan.org/v0/release/_search?q=author:"+settings.pause_id+"%20AND%20status:latest&fields=version,distribution,date,tests&size=100&sort=distribution",
 					success: function(json)
 					{
 						if (json.timed_out === 'false')
@@ -75,9 +75,7 @@
 									container,
 									settings,
 									index,
-									element.fields.distribution,
-									element.fields.version,
-									element.fields.date
+									element.fields
 								);
 							}
 						);
@@ -87,7 +85,7 @@
 					},
 					error: function(xhr)
 					{
-						alert('Error: ' + xhr.statusText);
+						console.log('Error querying MetaCPAN for information about the distributions: ' + xhr.statusText);
 					}
 				}
 			);
@@ -101,19 +99,30 @@
 		* distribution rows in.
 		* @param {hash} settings The settings to use for display.
 		*/
-		function populate_github_information(container, settings)
+		function populate_github_information(container, settings, page)
 		{
+			// Default to page 1.
+			if (typeof(page) === 'undefined') {
+				page = 1;
+			}
+
 			$.ajax(
 				{
 					type: 'GET',
 					async: true,
 					dataType: "json",
-					url: "https://api.github.com/users/"+settings.github_id+"/repos",
+					url: "https://api.github.com/users/"+settings.github_id+"/repos?page="+page+"&per_page=100",
 					success: function(json)
 					{
-						if (json.length === 0)
+						if (json.length <= 0)
 						{
-							alert('GitHub returned no repositories for this username!');
+							// Callback for success, if needed.
+							if (settings.on_success)
+							{
+								settings.on_success(json);
+							}
+
+							// There is no more information to query, return.
 							return;
 						}
 
@@ -132,15 +141,17 @@
 							}
 						);
 
-						// Callback for success, if needed.
-						if (settings.on_success)
-						{
-							settings.on_success(json);
+						// Query the next page.
+						var max_github_requests = typeof(settings.max_github_requests) === 'undefined'
+							? 5
+							: settings.max_github_requests;
+						if (page < max_github_requests) {
+							populate_github_information(container, settings, page+1);
 						}
 					},
 					error: function(xhr)
 					{
-						alert('Error: ' + xhr.statusText);
+						console.log('Error querying GitHub for repository information: ' + xhr.statusText);
 					}
 				}
 			);
@@ -168,20 +179,33 @@
 		* distribution rows in.
 		* @param {hash} settings The settings to use for display.
 		* @param {integer} index The index of the distribution retrieved.
-		* @param {string} distribution The name of the distribution.
-		* @param {string} version The current version of the distribution.
-		* @param {string} date The date of the latest release of the distribution.
+		* @param {string} metacpan_data The data returned by MetaCPAN for the distribution.
 		*/
-		function display_distribution(container, settings, index, distribution, version, date)
+		function display_distribution(container, settings, index, metacpan_data)
 		{
+			var distribution = metacpan_data.distribution;
 			var repository = get_repository(settings, distribution);
+
+			// Create a placeholder if MetaCPAN didn't return test information. This
+			// seems to occasionally happen.
+			if (typeof(metacpan_data.tests) === 'undefined') {
+				metacpan_data.tests = {
+					'pass': '',
+					'fail': '',
+					'na': '',
+					'unknown': ''
+				};
+			}
 
 			// Gather all the data that we will use to build the table.
 			var data =
 			{
 				'distribution': distribution,
-				'version': version,
-				'date': date,
+				'metacpan-distname': $('<a>')
+					.attr('href', 'https://metacpan.org/release/'+distribution)
+					.html(distribution),
+				'version': metacpan_data.version,
+				'date': metacpan_data.date,
 				'travis_status_badge':
 					settings.travis_ci
 						? $('<a>')
@@ -210,7 +234,11 @@
 					.html('MetaCPAN'),
 				'cpants': $('<a>')
 					.attr('href', 'http://cpants.cpanauthors.org/dist/'+distribution)
-					.html('CPANTS')
+					.html('CPANTS'),
+				'cpan-testers-pass': metacpan_data.tests.pass,
+				'cpan-testers-fail': metacpan_data.tests.fail,
+				'cpan-testers-na': metacpan_data.tests.na,
+				'cpan-testers-unknown': metacpan_data.tests.unknown
 			};
 
 			// Clone row.

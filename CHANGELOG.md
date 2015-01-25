@@ -1,6 +1,17 @@
 CPAN Distributions List Changelog
 =================================
 
+Version 1.0.0 - 2015-01-24
+--------------------------
+
+ * Changed to use SVG badges for Coveralls.io and Travis-CI (GH-3).
+ * Added support for pagination of queries to retrieve information from
+   GitHub's API (GH-1).
+ * Changed to use console.log() for non-fatal errors instead of alert().
+ * Added 'metacpan-distname' to allow displaying a link to the MetaCPAN page
+   with the name of the distribution.
+ * Added CPAN Testers numbers to the data available for display.
+
 Version 0.2.0 - 2013-07-08
 --------------------------
 
@@ -14,4 +25,3 @@ Version 0.1.0 - 2013-06-23
 --------------------------
 
  * Initial release.
-
