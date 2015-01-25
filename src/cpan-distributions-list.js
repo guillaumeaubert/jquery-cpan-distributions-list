@@ -96,19 +96,30 @@
 		* distribution rows in.
 		* @param {hash} settings The settings to use for display.
 		*/
-		function populate_github_information(container, settings)
+		function populate_github_information(container, settings, page)
 		{
+			// Default to page 1.
+			if (typeof(page) === 'undefined') {
+				page = 1;
+			}
+
 			$.ajax(
 				{
 					type: 'GET',
 					async: true,
 					dataType: "json",
-					url: "https://api.github.com/users/"+settings.github_id+"/repos",
+					url: "https://api.github.com/users/"+settings.github_id+"/repos?page="+page+"&per_page=100",
 					success: function(json)
 					{
-						if (json.length === 0)
+						if (json.length <= 0)
 						{
-							alert('GitHub returned no repositories for this username!');
+							// Callback for success, if needed.
+							if (settings.on_success)
+							{
+								settings.on_success(json);
+							}
+
+							// There is no more information to query, return.
 							return;
 						}
 
@@ -127,10 +138,12 @@
 							}
 						);
 
-						// Callback for success, if needed.
-						if (settings.on_success)
-						{
-							settings.on_success(json);
+						// Query the next page.
+						var max_github_requests = typeof(settings.max_github_requests) === 'undefined'
+							? 5
+							: settings.max_github_requests;
+						if (page < max_github_requests) {
+							populate_github_information(container, settings, page+1);
 						}
 					},
 					error: function(xhr)
