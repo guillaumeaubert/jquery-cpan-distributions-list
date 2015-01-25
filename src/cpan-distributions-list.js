@@ -50,7 +50,7 @@
 					type: 'GET',
 					async: true,
 					dataType: "json",
-					url: "http://api.metacpan.org/v0/release/_search?q=author:"+settings.pause_id+"%20AND%20status:latest&fields=version,distribution,date&size=100&sort=distribution",
+					url: "http://api.metacpan.org/v0/release/_search?q=author:"+settings.pause_id+"%20AND%20status:latest&fields=version,distribution,date,tests&size=100&sort=distribution",
 					success: function(json)
 					{
 						if (json.timed_out === 'false')
@@ -209,7 +209,11 @@
 					.html('MetaCPAN'),
 				'cpants': $('<a>')
 					.attr('href', 'http://cpants.cpanauthors.org/dist/'+distribution)
-					.html('CPANTS')
+					.html('CPANTS'),
+				'cpan-testers-pass': metacpan_data.tests.pass,
+				'cpan-testers-fail': metacpan_data.tests.fail,
+				'cpan-testers-na': metacpan_data.tests.na,
+				'cpan-testers-unknown': metacpan_data.tests.unknown
 			};
 
 			// Clone row.

@@ -28,6 +28,7 @@
 					<th>Distribution</th>
 					<th>Current Version</th>
 					<th>Links</th>
+					<th>CPAN Testers</th>
 					<th>Open Issues</th>
 					<th>Build Status</th>
 					<th>Test Coverage</th>
@@ -35,14 +36,19 @@
 			</thead>
 			<tbody>
 				<tr style="display: none;" class="template">
-					<td class="distribution"><!-- Name of the distribution --></td>
+					<td class="metacpan-distname"><!-- Link with the name of the distribution --></td>
 					<td class="version"><!-- Current version of the distribution --></td>
 					<td class="links">
 						<span class="github"><!-- GitHub link --></span>
 						|
-						<span class="metacpan"><!-- MetaCPAN link --></span>
-						|
 						<span class="cpants"><!-- CPANTS link --></span>
+					</td>
+					<td class="cpan-testers">
+						<span class="cpan-testers-pass"><!-- CPAN Testers: passed tests --></span>
+						/
+						<span class="cpan-testers-fail"><!-- CPAN Testers: failed tests --></span>
+						/
+						<span class="cpan-testers-na"><!-- CPAN Testers: N/A tests --></span>
 					</td>
 					<td class="github_open_issues"><!-- Count of issues and link to GitHub -->?</td>
 					<td class="travis_status_badge"><!-- Travis CI - badge to indicate build status --></td>
