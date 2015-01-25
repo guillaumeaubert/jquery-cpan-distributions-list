@@ -82,7 +82,7 @@
 					},
 					error: function(xhr)
 					{
-						alert('Error: ' + xhr.statusText);
+						console.log('Error querying MetaCPAN for information about the distributions: ' + xhr.statusText);
 					}
 				}
 			);
@@ -135,7 +135,7 @@
 					},
 					error: function(xhr)
 					{
-						alert('Error: ' + xhr.statusText);
+						console.log('Error querying GitHub for repository information: ' + xhr.statusText);
 					}
 				}
 			);
