@@ -185,7 +185,7 @@
 							.attr('href', 'https://travis-ci.org/'+settings.github_id+'/'+repository)
 							.html(
 								$('<img>')
-									.attr('src', 'https://travis-ci.org/'+settings.github_id+'/'+repository+'.png?branch=master')
+									.attr('src', 'https://travis-ci.org/'+settings.github_id+'/'+repository+'.svg?branch=master')
 									.attr('alt', 'Build Status')
 							)
 						: '',
@@ -195,7 +195,7 @@
 							.attr('href', 'https://coveralls.io/r/'+settings.github_id+'/'+repository+'?branch=master')
 							.html(
 								$('<img>')
-									.attr('src', 'https://coveralls.io/repos/'+settings.github_id+'/'+repository+'/badge.png?branch=master')
+									.attr('src', 'https://coveralls.io/repos/'+settings.github_id+'/'+repository+'/badge.svg?branch=master')
 									.attr('alt', 'Coverage Status')
 							)
 						: '',

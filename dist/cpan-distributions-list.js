@@ -1,6 +1,6 @@
-/*! CPAN Distributions List - v0.2.0 - 2013-07-09
+/*! CPAN Distributions List - v0.2.0 - 2015-01-24
 * https://github.com/guillaumeaubert/jquery-cpan-distributions-list
-* Copyright (c) 2013 Guillaume Aubert; Licensed GPLv3 */
+* Copyright (c) 2015 Guillaume Aubert; Licensed GPLv3 */
 (
 	function($)
 	{
@@ -188,7 +188,7 @@
 							.attr('href', 'https://travis-ci.org/'+settings.github_id+'/'+repository)
 							.html(
 								$('<img>')
-									.attr('src', 'https://travis-ci.org/'+settings.github_id+'/'+repository+'.png?branch=master')
+									.attr('src', 'https://travis-ci.org/'+settings.github_id+'/'+repository+'.svg?branch=master')
 									.attr('alt', 'Build Status')
 							)
 						: '',
@@ -198,7 +198,7 @@
 							.attr('href', 'https://coveralls.io/r/'+settings.github_id+'/'+repository+'?branch=master')
 							.html(
 								$('<img>')
-									.attr('src', 'https://coveralls.io/repos/'+settings.github_id+'/'+repository+'/badge.png?branch=master')
+									.attr('src', 'https://coveralls.io/repos/'+settings.github_id+'/'+repository+'/badge.svg?branch=master')
 									.attr('alt', 'Coverage Status')
 							)
 						: '',
