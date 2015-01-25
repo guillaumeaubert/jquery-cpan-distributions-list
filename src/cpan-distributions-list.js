@@ -176,10 +176,10 @@
 			// Gather all the data that we will use to build the table.
 			var data =
 			{
-				distribution: distribution,
-				version: version,
-				date: date,
-				travis_status_badge:
+				'distribution': distribution,
+				'version': version,
+				'date': date,
+				'travis_status_badge':
 					settings.travis_ci
 						? $('<a>')
 							.attr('href', 'https://travis-ci.org/'+settings.github_id+'/'+repository)
@@ -189,7 +189,7 @@
 									.attr('alt', 'Build Status')
 							)
 						: '',
-				coveralls_badge:
+				'coveralls_badge':
 					settings.coveralls
 						? $('<a>')
 							.attr('href', 'https://coveralls.io/r/'+settings.github_id+'/'+repository+'?branch=master')
@@ -199,13 +199,13 @@
 									.attr('alt', 'Coverage Status')
 							)
 						: '',
-				github: $('<a>')
+				'github': $('<a>')
 					.attr('href', 'https://github.com/'+settings.github_id+'/'+repository)
 					.html('GitHub'),
-				metacpan: $('<a>')
+				'metacpan': $('<a>')
 					.attr('href', 'https://metacpan.org/release/'+distribution)
 					.html('MetaCPAN'),
-				cpants: $('<a>')
+				'cpants': $('<a>')
 					.attr('href', 'http://cpants.cpanauthors.org/dist/'+distribution)
 					.html('CPANTS')
 			};
