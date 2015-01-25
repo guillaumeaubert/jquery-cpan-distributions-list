@@ -176,9 +176,7 @@
 		* distribution rows in.
 		* @param {hash} settings The settings to use for display.
 		* @param {integer} index The index of the distribution retrieved.
-		* @param {string} distribution The name of the distribution.
-		* @param {string} version The current version of the distribution.
-		* @param {string} date The date of the latest release of the distribution.
+		* @param {string} metacpan_data The data returned by MetaCPAN for the distribution.
 		*/
 		function display_distribution(container, settings, index, metacpan_data)
 		{
