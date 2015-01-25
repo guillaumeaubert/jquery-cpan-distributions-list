@@ -72,9 +72,7 @@
 									container,
 									settings,
 									index,
-									element.fields.distribution,
-									element.fields.version,
-									element.fields.date
+									element.fields
 								);
 							}
 						);
@@ -169,16 +167,17 @@
 		* @param {string} version The current version of the distribution.
 		* @param {string} date The date of the latest release of the distribution.
 		*/
-		function display_distribution(container, settings, index, distribution, version, date)
+		function display_distribution(container, settings, index, metacpan_data)
 		{
+			var distribution = metacpan_data.distribution;
 			var repository = get_repository(settings, distribution);
 
 			// Gather all the data that we will use to build the table.
 			var data =
 			{
 				'distribution': distribution,
-				'version': version,
-				'date': date,
+				'version': metacpan_data.version,
+				'date': metacpan_data.date,
 				'travis_status_badge':
 					settings.travis_ci
 						? $('<a>')
