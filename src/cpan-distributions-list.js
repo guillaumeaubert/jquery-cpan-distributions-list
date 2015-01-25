@@ -183,6 +183,17 @@
 			var distribution = metacpan_data.distribution;
 			var repository = get_repository(settings, distribution);
 
+			// Create a placeholder if MetaCPAN didn't return test information. This
+			// seems to occasionally happen.
+			if (typeof(metacpan_data.tests) === 'undefined') {
+				metacpan_data.tests = {
+					'pass': '',
+					'fail': '',
+					'na': '',
+					'unknown': ''
+				};
+			}
+
 			// Gather all the data that we will use to build the table.
 			var data =
 			{
