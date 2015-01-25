@@ -176,6 +176,9 @@
 			var data =
 			{
 				'distribution': distribution,
+				'metacpan-distname': $('<a>')
+					.attr('href', 'https://metacpan.org/release/'+distribution)
+					.html(distribution),
 				'version': metacpan_data.version,
 				'date': metacpan_data.date,
 				'travis_status_badge':
