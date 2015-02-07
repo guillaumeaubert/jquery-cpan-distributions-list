@@ -139,7 +139,7 @@ Development
 Copyright & License
 -------------------
 
-Copyright 2013 Guillaume Aubert.
+Copyright 2013-2015 Guillaume Aubert.
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License version 3 as published by the Free
@@ -151,4 +151,3 @@ PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with
 this program. If not, see http://www.gnu.org/licenses/
-
