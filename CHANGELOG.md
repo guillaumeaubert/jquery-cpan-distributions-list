@@ -1,6 +1,11 @@
 CPAN Distributions List Changelog
 =================================
 
+Version 1.0.1 - 2015-04-20
+--------------------------
+
+ * Added count of CPAN distributions found for display in the document.
+
 Version 1.0.0 - 2015-01-24
 --------------------------
 
