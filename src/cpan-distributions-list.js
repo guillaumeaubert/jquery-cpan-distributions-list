@@ -64,6 +64,9 @@
 							return;
 						}
 
+						// Display the number of distributions found.
+						$('.cpan_distributions_count').html( json.hits.total );
+
 						// Display each distribution.
 						json.hits.hits.forEach(
 							function(element, index)
