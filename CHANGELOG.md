@@ -1,6 +1,12 @@
 CPAN Distributions List Changelog
 =================================
 
+Version 1.0.2 - 2016-02-14
+--------------------------
+
+ * Switch MetaCPAN queries to use https.
+
+
 Version 1.0.1 - 2015-04-20
 --------------------------
 
