@@ -50,7 +50,7 @@
 					type: 'GET',
 					async: true,
 					dataType: "json",
-					url: "http://api.metacpan.org/v0/release/_search?q=author:"+settings.pause_id+"%20AND%20status:latest&fields=version,distribution,date,tests&size=100&sort=distribution",
+					url: "https://api.metacpan.org/v0/release/_search?q=author:"+settings.pause_id+"%20AND%20status:latest&fields=version,distribution,date,tests&size=100&sort=distribution",
 					success: function(json)
 					{
 						if (json.timed_out === 'false')
