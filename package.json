@@ -1,5 +1,6 @@
 {
   "name": "cpan-distributions-list",
+	"title": "CPAN Distributions List",
   "author": "Guillaume Aubert",
   "license": "MIT",
   "version": "1.0.3",
@@ -51,5 +52,5 @@
   "bugs": {
     "url": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list/issues"
   },
-  "homepage": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list#readme"
+  "homepage": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list"
 }
