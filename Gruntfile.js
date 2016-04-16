@@ -95,8 +95,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-qunit-istanbul');
   grunt.loadNpmTasks('grunt-shell');
 
-  // Default task.
+  // Set up available task.
   grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
-	grunt.registerTask('travis', ['qunit', 'shell:coverall']);
+  grunt.registerTask('build', ['jshint', 'clean', 'concat', 'uglify']);
+  grunt.registerTask('travis', ['qunit', 'shell:coverall']);
 
 };
