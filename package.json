@@ -1,17 +1,24 @@
 {
   "name": "cpan-distributions-list",
-  "title": "CPAN Distributions List",
-  "description": "Display a list of CPAN distributions and related information for a specified Perl author.",
+  "author": "Guillaume Aubert",
+  "license": "MIT",
   "version": "1.0.3",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/guillaumeaubert/jquery-cpan-distributions-list.git"
+  "description": "JQuery plugin to display a list of CPAN distributions and related information for a specified Perl author.",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
   },
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "scripts": {
-    "test": "grunt travis"
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-qunit": "^0.5.2",
+    "grunt-contrib-uglify": "^0.7.0",
+    "coveralls": "^2.11.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-qunit-istanbul": "^0.4.7",
+    "grunt-shell": "^1.1.1"
   },
   "devDependencies": {
     "grunt-contrib-jshint": ">=0.3.0",
@@ -24,5 +31,25 @@
     "grunt-shell": ">=0.3.0",
     "coveralls": ">=2.0.16",
     "grunt-qunit-istanbul": ">=0.1.3"
-  }
+  },
+  "scripts": {
+    "test": "grunt travis"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list.git"
+  },
+  "keywords": [
+		"ecosystem:jquery",
+		"jquery-plugin",
+    "CPAN",
+    "Perl",
+    "distributions",
+    "author",
+    "list"
+  ],
+  "bugs": {
+    "url": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list/issues"
+  },
+  "homepage": "https://github.com/guillaumeaubert/jquery-cpan-distributions-list#readme"
 }
