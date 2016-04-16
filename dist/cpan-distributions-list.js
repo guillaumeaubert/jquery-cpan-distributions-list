@@ -1,4 +1,4 @@
-/*! CPAN Distributions List - v1.0.2 - 2016-04-16
+/*! CPAN Distributions List - v1.0.3 - 2016-04-16
 * https://github.com/guillaumeaubert/jquery-cpan-distributions-list
 * Copyright (c) 2016 Guillaume Aubert; Licensed MIT */
 (

@@ -1,6 +1,12 @@
 CPAN Distributions List Changelog
 =================================
 
+Version 1.0.3 - 2016-04-16
+--------------------------
+
+ * Relicensed under the MIT license.
+
+
 Version 1.0.2 - 2016-02-14
 --------------------------
 
